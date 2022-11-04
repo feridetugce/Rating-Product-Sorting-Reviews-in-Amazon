@@ -1,4 +1,4 @@
-#####################################################################
+###########################################################
 import pandas as pd
 import numpy as np
 import math
@@ -33,21 +33,23 @@ df.columns
 
 
 #Görev 1: Average Rating’i güncel yorumlara göre hesaplayınız ve var olan average rating ile kıyaslayınız.
+
 #Paylaşılan veri setinde kullanıcılar bir ürüne puanlar vermiş ve yorumlar yapmıştır. Bu görevde amacımız verilen puanları tarihe göre
-#ağırlıklandırarak değerlendirmek. İlk ortalama puan ile elde edilecek tarihe göre ağırlıklı puanın karşılaştırılması gerekmektedir.
+#ağırlıklandırarak değerlendirmektir. İlk ortalama puan ile elde edilecek tarihe göre ağırlıklı puanın karşılaştırılması gerekmektedir.
 #Adım 1: Ürünün ortalama puanını hesaplayınız.
 
 df["overall"].mean()
 
 #Adım 2: Tarihe göre ağırlıklı puan ortalamasını hesaplayınız.
-#• reviewTime değişkenini tarih değişkeni olarak tanıtmanız
+#reviewTime değişkenini tarih değişkeni olarak tanıtmanız
 
 df["reviewTime"] = pd.to_datetime(df["reviewTime"])
 df.info()
-#• reviewTime'ın max değerini current_date olarak kabul etmeniz
+
+#reviewTime'ın max değerini current_date olarak kabul etmeniz
 current_date = pd.to_datetime(df["reviewTime"].max())
 
-#• her bir puan-yorum tarihi ile current_date'in farkını gün cinsinden ifade ederek yeni değişken oluşturmanız ve gün cinsinden ifade edilen
+#her bir puan-yorum tarihi ile current_date'in farkını gün cinsinden ifade ederek yeni değişken oluşturmanız ve gün cinsinden ifade edilen
 #değişkeni quantile fonksiyonu ile 4'e bölüp (3 çeyrek verilirse 4 parça çıkar) çeyrekliklerden gelen değerlere göre ağırlıklandırma yapmanız
 #gerekir. Örneğin q1 = 12 ise ağırlıklandırırken 12 günden az süre önce yapılan yorumların ortalamasını alıp bunlara yüksek ağırlık vermek gibi.
 
